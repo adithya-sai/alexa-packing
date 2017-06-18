@@ -16,11 +16,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         WebView myWebView = (WebView) findViewById(R.id.webview);
-        myWebView.setWebViewClient(new WebViewClient());
-        myWebView.loadUrl("http://www.google.com");
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
+        myWebView.setWebViewClient(new WebViewClient());
+        myWebView.loadUrl("http://tanay.io/packeroo");
         myWebView.addJavascriptInterface(new WebAppInterface(this), "android");
+        myWebView.clearView();
+        myWebView.measure(100, 100);
+        myWebView.getSettings().setUseWideViewPort(true);
+        myWebView.getSettings().setLoadWithOverviewMode(true);
     }
     public class WebAppInterface {
         Context mContext;
